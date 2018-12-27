@@ -1,14 +1,23 @@
 const { MongoClient } = require('mongodb');
 const restify = require('restify');
+const corsMiddleware = require('restify-cors-middleware')
 
 const url = process.env.DATABASE_URL ||'mongodb://localhost:27017/mydb';
 const dbName = process.env.DATABASE_NAME || 'mydb';
 
+const cors = corsMiddleware({
+  origins: ['*'],
+  allowHeaders: ['API-Token'],
+  exposeHeaders: ['API-Token-Expiry']
+});
+
 const server = restify.createServer();
 server.use(restify.plugins.bodyParser());
+server.pre(cors.preflight);
+server.use(cors.actual);
 
 (async function () {
-  const client = new MongoClient(url);
+  const client = new MongoClient(url, { useNewUrlParser: true });
 
   try {
     await client.connect();
