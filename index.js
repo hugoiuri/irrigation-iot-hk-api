@@ -37,6 +37,18 @@ server.use(cors.actual);
       return next();
     });
 
+    server.get('/measurements/greater', async (req, res, next) => {
+      const options = {
+        sort: { value: -1, datetime: -1 },
+        limit: 1
+      }
+
+      const result = await measurements.find(req.body, options).next();
+
+      res.send(200, result);
+      return next();
+    });
+
     server.post('/measurements', async (req, res, next) => {
       const measurement = req.body;
       measurement.datetime = new Date().toISOString();

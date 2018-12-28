@@ -10,7 +10,10 @@ Salva uma medição.
 
 Exemplo do body:
 ```json
-{ "humidity": 634 }
+{ 
+    "type": "humidity",
+    "value": 556
+}
 ```
 
 ### GET /measurements/:top
@@ -21,16 +24,32 @@ Exemplo de retorno:
 ```json
 [
     {
-        "_id": "5c254286577b4210aa81ce36",
-        "humidity": 745,
-        "datetime": "2018-12-27T21:22:14.406Z"
+        "_id": "5c2566d79b15e20004a96a31",
+        "type": "humidity",
+        "value": 550,
+        "datetime": "2018-12-27T23:57:11.216Z"
     },
     {
-        "_id": "5c253d7de6ac840bfe699d3c",
-        "humidity": 634,
-        "datetime": "2018-12-27T21:00:45.236Z"
+        "_id": "5c25669b9b15e20004a96a30",
+        "type": "humidity",
+        "value": 551,
+        "datetime": "2018-12-27T23:56:11.123Z"
     }
 ]
+```
+
+### GET /measurements/greater
+
+Retorna a maior e mais recente medição
+
+Exemplo de retorno:
+```json
+{
+    "_id": "5c256f2993f7f5336a87ad73",
+    "type": "humidity",
+    "value": 900,
+    "datetime": "2018-12-28T00:32:41.178Z"
+}
 ```
 
 ## Instalação e execução da aplicação
