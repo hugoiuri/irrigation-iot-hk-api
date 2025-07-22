@@ -11,9 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "install": "^0.12.2",
-    "mongodb": "^3.1.10",
-    "npm": "^6.5.0",
-    "restify": "^7.3.0",
+    "mongodb": "^3.1.13",
+    "npm": "^11.4.2",
+    "restify": "^11.1.0",
     "restify-cors-middleware": "^1.1.1"
   }
 }
